@@ -1,0 +1,9 @@
+# ignore venvs, caches, and Git internals
+venv
+.env
+__pycache__
+*.pyc
+.git
+.github
+tests
+*.log
