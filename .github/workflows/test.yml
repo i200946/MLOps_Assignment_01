@@ -2,7 +2,8 @@ name: Run Tests
 
 on:
   pull_request:
-    branches: [ "test" ]
+    branches:
+      - test
 
 jobs:
   test:
@@ -19,8 +20,8 @@ jobs:
 
       - name: Install dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run unit tests
-        run: pytest
-
+      - name: Run pytest
+        run: pytest tests/
