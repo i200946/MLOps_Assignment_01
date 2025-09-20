@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = 'dockerhub-creds' // Jenkins credentials ID for Docker Hub
+        DOCKERHUB_CREDENTIALS = 'docker-cred' // updated Jenkins credentials ID for Docker Hub
         IMAGE_NAME = 'your-dockerhub-username/mlops_assignment_01'
         IMAGE_TAG = 'latest'
     }
@@ -36,15 +36,17 @@ pipeline {
     post {
         success {
             echo 'Pipeline completed successfully!'
-            mail to: 'admin@example.com',
-                 subject: "Jenkins: Build Successful",
-                 body: "The pipeline for $IMAGE_NAME:$IMAGE_TAG completed successfully."
+            // optional: email notifications, remove or configure if not needed
+            // mail to: 'admin@example.com',
+            //      subject: "Jenkins: Build Successful",
+            //      body: "The pipeline for $IMAGE_NAME:$IMAGE_TAG completed successfully."
         }
         failure {
             echo 'Pipeline failed!'
-            mail to: 'admin@example.com',
-                 subject: "Jenkins: Build Failed",
-                 body: "The pipeline for $IMAGE_NAME:$IMAGE_TAG failed. Please check Jenkins."
+            // optional: email notifications, remove or configure if not needed
+            // mail to: 'admin@example.com',
+            //      subject: "Jenkins: Build Failed",
+            //      body: "The pipeline for $IMAGE_NAME:$IMAGE_TAG failed. Please check Jenkins."
         }
     }
 }
